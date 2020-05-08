@@ -1,0 +1,168 @@
+AS Monaco
+AS Nancy Lorraine
+AS Saint-Étienne
+Amiens SC
+Angers SCO
+Dijon FCO
+ESTAC Troyes
+En Avant de Guingamp
+FC Girondins de Bordeaux
+FC Lorient
+FC Metz
+FC Nantes
+GFC Ajaccio
+LOSC Lille
+Montpellier HSC
+Nîmes Olympique
+OGC Nice
+Olympique Lyonnais
+Olympique de Marseille
+Paris Saint-Germain
+RC Strasbourg Alsace
+Racing Club de Lens
+Sporting Club de Bastia
+Stade Brestois 29
+Stade Malherbe Caen
+Stade Rennais FC
+Stade de Reims
+Toulouse Football Club
+Évian Thonon Gaillard FC
+
+2014-15
+Pos,Team,Pld,W,D,L,GF,GA,GD,Pts
+1,Paris Saint-Germain,38,24,11,3,83,36,+47,83
+2,Olympique Lyonnais,38,22,9,7,72,33,+39,75
+3,AS Monaco,38,20,11,7,51,26,+25,71
+4,Olympique de Marseille,38,21,6,11,76,42,+34,69
+5,AS Saint-Étienne,38,19,12,7,51,30,+21,69
+6,FC Girondins de Bordeaux,38,17,12,9,47,44,+3,63
+7,Montpellier HSC,38,16,8,14,46,39,+7,56,
+8,LOSC Lille,38,16,8,14,43,42,+1,56
+9,Stade Rennais FC,38,13,11,14,35,42,-7,50
+10,En Avant de Guingamp,38,15,4,19,41,55,-14,49
+11,OGC Nice,38,13,9,16,44,53,-9,48
+12,Sporting Club de Bastia,38,12,11,15,37,46,-9,47
+13,Stade Malherbe Caen,38,12,10,16,54,55,-1,46
+14,FC Nantes,38,11,12,15,29,40,-11,45
+15,Stade de Reims,38,12,8,18,47,66,-19,44
+16,FC Lorient,38,12,7,19,44,50,-6,43
+17,Toulouse Football Club,38,12,6,20,43,64,-21,42
+18,Évian Thonon Gaillard FC,38,11,4,23,41,62,-21,37
+19,FC Metz,38,7,9,22,31,61,-30,30
+20,Racing Club de Lens,38,7,8,23,32,61,-29,29
+
+2015-16
+Pos,Team,Pld,W,D,L,GF,GA,GD,Pts
+1,Paris Saint-Germain,38,30,6,2,102,19,+83,96
+2,Olympique Lyonnais,38,19,8,11,67,43,+24,65
+3,AS Monaco,38,17,14,7,57,50,+7,65
+4,OGC Nice,38,18,9,11,58,41,+17,63
+5,LOSC Lille,38,15,15,8,39,27,+12,60
+6,AS Saint-Étienne,38,17,7,14,42,37,+5,58
+7,Stade Malherbe Caen,38,16,6,16,39,52,-13,54,
+8,Stade Rennais FC,38,13,13,12,52,54,-2,52
+9,Angers SCO,38,13,11,14,40,38,+2,50
+10,Sporting Club de Bastia,38,14,8,16,36,42,-6,50
+11,FC Girondins de Bordeaux,38,12,14,12,50,57,-7,50
+12,Montpellier HSC,38,14,7,17,49,47,+2,49
+13,Olympique de Marseille,38,10,18,10,48,42,+6,48
+14,FC Nantes,38,12,12,14,33,44,-11,48
+15,FC Lorient,38,11,13,14,47,58,-11,46
+16,En Avant de Guingamp,38,11,11,16,47,56,-9,44
+17,Toulouse Football Club,38,9,13,16,45,55,-10,40
+18,Stade de Reims,38,10,9,19,44,57,-13,39
+19,GFC Ajaccio,38,8,13,17,37,58,-21,37
+20,ESTAC Troyes,38,3,9,26,28,83,-55,18
+
+2016-17
+Pos,Team,Pld,W,D,L,GF,GA,GD,Pts
+1,AS Monaco,38,30,5,3,107,31,+76,95
+2,Paris Saint-Germain,38,27,6,5,83,27,+56,87
+3,OGC Nice,38,22,12,4,63,36,+27,78
+4,Olympique Lyonnais,38,21,4,13,77,48,+29,67
+5,Olympique de Marseille,38,17,11,10,57,41,+16,62
+6,FC Girondins de Bordeaux,38,15,14,9,53,43,+10,59
+7,FC Nantes,38,14,9,15,40,54,-14,51,
+8,AS Saint-Étienne,38,12,14,12,41,42,-1,50
+9,Stade Rennais FC,38,12,14,12,36,42,-6,50
+10,En Avant de Guingamp,38,14,8,16,46,53,-7,50
+11,LOSC Lille,38,13,7,18,40,47,-7,46
+12,Angers SCO,38,13,7,18,40,49,-9,46
+13,Toulouse Football Club,38,10,14,14,37,41,-4,44
+14,FC Metz,38,11,10,17,39,72,-33,43
+15,Montpellier HSC,38,10,9,19,48,66,-18,39
+16,Dijon FCO,38,8,13,17,46,58,-12,37
+17,Stade Malherbe Caen,38,10,7,21,36,65,-29,37
+18,FC Lorient,38,10,6,22,44,70,-26,36
+19,AS Nancy Lorraine,38,9,8,21,29,52,-23,35
+20,Sporting Club de Bastia,38,8,10,20,29,54,-25,34
+
+2017-18
+Pos,Team,Pld,W,D,L,GF,GA,GD,Pts
+1,Paris Saint-Germain,38,29,6,3,108,29,+79,93
+2,AS Monaco,38,24,8,6,85,45,+40,80
+3,Olympique Lyonnais,38,23,9,6,87,43,+44,78
+4,Olympique de Marseille,38,22,11,5,80,47,+33,77
+5,Stade Rennais FC,38,16,10,12,50,44,+6,58
+6,FC Girondins de Bordeaux,38,16,7,15,53,48,+5,55
+7,AS Saint-Étienne,38,15,10,13,47,50,-3,55,
+8,OGC Nice,38,15,9,14,53,52,+1,54
+9,FC Nantes,38,14,10,14,36,41,-5,52
+10,Montpellier HSC,38,11,18,9,36,33,+3,51
+11,Dijon FCO,38,13,9,16,55,73,-18,48
+12,En Avant de Guingamp,38,12,11,15,48,59,-11,47
+13,Amiens SC,38,12,9,17,37,42,-5,45
+14,Angers SCO,38,9,14,15,42,52,-10,41
+15,RC Strasbourg Alsace,38,9,11,18,44,67,-23,38
+16,Stade Malherbe Caen,38,10,8,20,27,52,-25,38
+17,LOSC Lille,38,10,8,20,41,67,-26,38
+18,Toulouse Football Club,38,9,10,19,38,54,-16,37
+19,ESTAC Troyes,38,9,6,23,32,59,-27,33
+20,FC Metz,38,6,8,24,34,76,-42,26
+
+2018-19
+
+Pos,Team,Pld,W,D,L,GF,GA,GD,Pts
+1,Paris Saint-Germain,38,29,4,5,105,35,+70,91
+2,LOSC Lille,38,22,9,7,68,33,+35,75
+3,Olympique Lyonnais,38,21,9,8,70,47,+23,72
+4,AS Saint-Étienne,38,19,9,10,59,41,+18,66
+5,Olympique de Marseille,38,18,7,13,60,52,+8,61,
+6,Montpellier HSC,38,15,14,9,53,42,+11,59
+7,OGC Nice,38,15,11,12,30,35,-5,56
+8,Stade de Reims,38,13,16,9,39,42,-3,55
+9,Nîmes Olympique,38,15,8,15,57,58,-1,53
+10,Stade Rennais FC,38,13,13,12,55,52,+3,52
+11,RC Strasbourg Alsace,38,11,16,11,58,48,+10,49
+12,FC Nantes,38,13,9,16,48,48,0,48,
+13,Angers SCO,38,10,16,12,44,49,-5,46
+14,FC Girondins de Bordeaux,38,10,11,17,34,42,-8,41
+15,Amiens SC,38,9,11,18,31,52,-21,38
+16,Toulouse Football Club,38,8,14,16,35,57,-22,38
+17,AS Monaco,38,8,12,18,38,57,-19,36
+18,Dijon FCO,38,9,7,22,31,60,-29,34
+19,Stade Malherbe Caen,38,7,12,19,29,54,-25,33
+20,En Avant de Guingamp,38,5,12,21,28,68,-40,27
+
+2019-20
+Pos,Team,Pld,W,D,L,GF,GA,GD,Pts
+1,Paris Saint-Germain,27,22,2,3,75,24,+51,2.52
+2,Olympique de Marseille,28,16,8,4,41,29,+12,2.00
+3,Stade Rennais FC,28,15,5,8,38,24,+14,1.79
+4,LOSC Lille,28,15,4,9,35,27,+8,1.75
+5,OGC Nice,28,11,8,9,41,38,+3,1.46
+6,Stade de Reims,28,10,11,7,26,21,+5,1.46
+7,Olympique Lyonnais,28,11,7,10,42,27,+15,1.43
+8,Montpellier HSC,28,11,7,10,35,34,+1,1.43
+9,AS Monaco,28,11,7,10,44,44,0,1.43
+10,RC Strasbourg Alsace,27,11,5,11,32,32,0,1.41
+11,Angers SCO,28,11,6,11,28,33,-5,1.39
+12,FC Girondins de Bordeaux,28,9,10,9,40,34,+6,1.32
+13,FC Nantes,28,11,4,13,28,31,-3,1.32
+14,Stade Brestois 29,28,8,10,10,34,37,-3,1.21
+15,FC Metz,28,8,10,10,27,35,-8,1.21
+16,Dijon FCO,28,7,9,12,27,37,-10,1.07
+17,AS Saint-Étienne,28,8,6,14,29,45,-16,1.07
+18,Nîmes Olympique,28,7,6,15,29,44,-15,0.96
+19,Amiens SC,28,4,11,13,31,50,-19,0.82
+20,Toulouse Football Club,28,3,4,21,22,58,-36,0.46

@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+*{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	text-decoration: none;
+	font-family: 'Open Sans', sans-serif;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.page_title{
+	position: absolute;
+	font-size: 18px;
+	color: white;
+	right: 0;
+	left: 0;
+	padding-left: 20px;
+	line-height: 70px;
+	text-align: left;
+	background: #062836;
+	font-weight: bold;
+}
+
+.sidebar {
+	left: 0;
+	top: 70px;
+	width: 12%;
+	bottom: 0;
+	background: #04384b;
+	transition: all .1s ease;
+	position: absolute;
+}
+
+.sidebar header {
+	font-size: 18px;
+	font-weight: normal;
+	color: white;
+	width: auto;
+	padding-left: 20px;
+	line-height: 70px;
+	text-align: left;
+	background: #09577a;
+	box-sizing: border-box;
+	border-bottom: 1px solid black;
+	border-top: 1px solid rgba(255,255,255,.1);
+}
+
+.sidebar ul li{
+	display: block;
+	height: 100%;
+	line-height: 65px;
+	font-size: 14px;
+	font-weight: normal;
+	color: white;
+	padding-left: 20px;
+	box-sizing: border-box;
+	border-bottom: 1px solid black;
+	border-top: 1px solid rgba(255,255,255,.1);
+	transition: .1s;
+}
+
+ul li:hover{
+	padding-left: 30px;
+	cursor: pointer;
+}
+
+.active {
+	background-color: black;
+}
+
+div#layout {
+	width: 84%;
+	height: 85%;
+	margin: 6% 2% 1% 14%;
+	text-align: center;
+	/*border-style: solid;*/
+	/*border-color: black;*/
+	/*border-width: 1px;*/
+	position: absolute;
+	box-sizing: border-box;
+}
+
+div#container {
+	margin:1%;
+	height: 96%;
+	background-color: #fff;
+	/*border-style: solid;*/
+	/*border-color: black;*/
+	/*border-width: 1px;*/
+	box-sizing: border-box;
+}
+
+svg {
+	width: 100%;
+	height: 100%;
+	/*border-style: solid;*/
+	/*border-color: black;*/
+	/*border-width: 1px;*/
+}
+
+text {
+	font-size: 12px;
+	fill: #000;
+}
+
+path {
+	stroke: black;
+}
+
+line {
+	stroke: black;
+}
+
+line#limit {
+	stroke-width: 3;
+}
+
+.grid path {
+	stroke-width: 0;
+}
+
+.grid .tick line {
+	stroke: #000000;
+	stroke-opacity: 0.3;
+}
+
+text.value {
+	font-size: 14px;
+}
+
+text.title {
+	font-size: 1.6em;
+	font-weight: 600;
+}
+
+text.label {
+	font-size: 1.3em;
+	font-weight: 700;
+}
+
+.line-path {
+	fill: none;
+	stroke: #000000;
+	stroke-width: 1;
+}
+
+.identifier {
+	fill: none;
+	stroke: #000000;
+	stroke-width: 2;
+}
+
+/*.d3-tip {*/
+/*	line-height: 1;*/
+/*	font-weight: bold;*/
+/*	padding: 12px;*/
+/*	background: rgba(0, 0, 0, 0.8);*/
+/*	color: #fff;*/
+/*	border-radius: 2px;*/
+/*}*/
+
+/*!* Creates a small triangle extender for the tooltip *!*/
+/*.d3-tip:after {*/
+/*	box-sizing: border-box;*/
+/*	display: inline;*/
+/*	font-size: 10px;*/
+/*	width: 100%;*/
+/*	line-height: 1;*/
+/*	color: rgba(0, 0, 0, 0.8);*/
+/*	content: "\25BC";*/
+/*	position: absolute;*/
+/*	text-align: center;*/
+/*}*/
+
+/*!* Style northward tooltips differently *!*/
+/*.d3-tip.n:after {*/
+/*	margin: -1px 0 0 0;*/
+/*	top: 100%;*/
+/*	left: 0;*/
+/*}*/
+
+.axis path,
+.axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.dot {
+	stroke: #000;
+}
+
+text.dotvalue {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: bold;
+	font-size: small;
+}
