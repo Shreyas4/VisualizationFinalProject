@@ -44,21 +44,72 @@ function bubbleChart() {
     function createBubbleNodes(rawData) {
         // use max size in the data as the max in the scale's domain
         // note we have to ensure that size is a number
-        const maxSize = d3.max(rawData, d => +d.Overall);
-        const minSize = d3.min(rawData, d => +d.Overall);
+        // ,,,,international_reputation,,,Overall,potential,Power,Skill,skill_moves,Value(EUR),wage_eur
 
         // size bubbles based on area
         const radiusScale = d3.scaleSqrt()
-            .domain([0, maxSize])
-            .range([0, 30])
+            .domain([0, 1])
+            .range([0, 22])
 
         // use map() to convert raw data into node data
         const myNodes = rawData.map(d => ({
             ...d,
-            radius: radiusScale(((+d.Overall) - minSize)/(maxSize - minSize)*40),
-            size: ((+d.Overall) - minSize)/(maxSize - minSize),
-            x: ((+d.Overall) - minSize)/(maxSize - minSize) * (bubbleWidth),
-            y: ((+d.Overall) - minSize)/(maxSize - minSize) * (bubbleHeight)
+            radius: radiusScale(((((+d.Overall) - d3.min(rawData, d => +d.Overall))/(d3.max(rawData, d => +d.Overall) - d3.min(rawData, d => +d.Overall)))
+                +(((+d.Defending) - d3.min(rawData, d => +d.Defending))/(d3.max(rawData, d => +d.Defending) - d3.min(rawData, d => +d.Defending)))
+                +(((+d.Attacking) - d3.min(rawData, d => +d.Attacking))/(d3.max(rawData, d => +d.Attacking) - d3.min(rawData, d => +d.Attacking)))
+                +(((+d.Goalkeeping) - d3.min(rawData, d => +d.Goalkeeping))/(d3.max(rawData, d => +d.Goalkeeping) - d3.min(rawData, d => +d.Goalkeeping)))
+                +(((+d.Age) - d3.min(rawData, d => +d.Age))/(d3.max(rawData, d => +d.Age) - d3.min(rawData, d => +d.Age)))
+                +(((+d.Mentality) - d3.min(rawData, d => +d.Mentality))/(d3.max(rawData, d => +d.Mentality) - d3.min(rawData, d => +d.Mentality)))
+                +(((+d.Movement) - d3.min(rawData, d => +d.Movement))/(d3.max(rawData, d => +d.Movement) - d3.min(rawData, d => +d.Movement)))
+                +(((+d.potential) - d3.min(rawData, d => +d.potential))/(d3.max(rawData, d => +d.potential) - d3.min(rawData, d => +d.potential)))
+                +(((+d.Power) - d3.min(rawData, d => +d.Power))/(d3.max(rawData, d => +d.Power) - d3.min(rawData, d => +d.Power)))
+                +(((+d.Skill) - d3.min(rawData, d => +d.Skill))/(d3.max(rawData, d => +d.Skill) - d3.min(rawData, d => +d.Skill)))
+                +(((+d.skill_moves) - d3.min(rawData, d => +d.skill_moves))/(d3.max(rawData, d => +d.skill_moves) - d3.min(rawData, d => +d.skill_moves)))
+                +(((+d['Value(EUR)']) - d3.min(rawData, d => +d['Value(EUR)']))/(d3.max(rawData, d => +d['Value(EUR)']) - d3.min(rawData, d => +d['Value(EUR)'])))
+                +(((+d.wage_eur) - d3.min(rawData, d => +d.wage_eur))/(d3.max(rawData, d => +d.wage_eur) - d3.min(rawData, d => +d.wage_eur))))
+                /13),
+            size: (((((+d.Overall) - d3.min(rawData, d => +d.Overall))/(d3.max(rawData, d => +d.Overall) - d3.min(rawData, d => +d.Overall)))
+                +(((+d.Defending) - d3.min(rawData, d => +d.Defending))/(d3.max(rawData, d => +d.Defending) - d3.min(rawData, d => +d.Defending)))
+                +(((+d.Attacking) - d3.min(rawData, d => +d.Attacking))/(d3.max(rawData, d => +d.Attacking) - d3.min(rawData, d => +d.Attacking)))
+                +(((+d.Goalkeeping) - d3.min(rawData, d => +d.Goalkeeping))/(d3.max(rawData, d => +d.Goalkeeping) - d3.min(rawData, d => +d.Goalkeeping)))
+                +(((+d.Age) - d3.min(rawData, d => +d.Age))/(d3.max(rawData, d => +d.Age) - d3.min(rawData, d => +d.Age)))
+                +(((+d.Mentality) - d3.min(rawData, d => +d.Mentality))/(d3.max(rawData, d => +d.Mentality) - d3.min(rawData, d => +d.Mentality)))
+                +(((+d.Movement) - d3.min(rawData, d => +d.Movement))/(d3.max(rawData, d => +d.Movement) - d3.min(rawData, d => +d.Movement)))
+                +(((+d.potential) - d3.min(rawData, d => +d.potential))/(d3.max(rawData, d => +d.potential) - d3.min(rawData, d => +d.potential)))
+                +(((+d.Power) - d3.min(rawData, d => +d.Power))/(d3.max(rawData, d => +d.Power) - d3.min(rawData, d => +d.Power)))
+                +(((+d.Skill) - d3.min(rawData, d => +d.Skill))/(d3.max(rawData, d => +d.Skill) - d3.min(rawData, d => +d.Skill)))
+                +(((+d.skill_moves) - d3.min(rawData, d => +d.skill_moves))/(d3.max(rawData, d => +d.skill_moves) - d3.min(rawData, d => +d.skill_moves)))
+                +(((+d['Value(EUR)']) - d3.min(rawData, d => +d['Value(EUR)']))/(d3.max(rawData, d => +d['Value(EUR)']) - d3.min(rawData, d => +d['Value(EUR)'])))
+                +(((+d.wage_eur) - d3.min(rawData, d => +d.wage_eur))/(d3.max(rawData, d => +d.wage_eur) - d3.min(rawData, d => +d.wage_eur))))
+                /13),
+            x: (((((+d.Overall) - d3.min(rawData, d => +d.Overall))/(d3.max(rawData, d => +d.Overall) - d3.min(rawData, d => +d.Overall)))
+                +(((+d.Defending) - d3.min(rawData, d => +d.Defending))/(d3.max(rawData, d => +d.Defending) - d3.min(rawData, d => +d.Defending)))
+                +(((+d.Attacking) - d3.min(rawData, d => +d.Attacking))/(d3.max(rawData, d => +d.Attacking) - d3.min(rawData, d => +d.Attacking)))
+                +(((+d.Goalkeeping) - d3.min(rawData, d => +d.Goalkeeping))/(d3.max(rawData, d => +d.Goalkeeping) - d3.min(rawData, d => +d.Goalkeeping)))
+                +(((+d.Age) - d3.min(rawData, d => +d.Age))/(d3.max(rawData, d => +d.Age) - d3.min(rawData, d => +d.Age)))
+                +(((+d.Mentality) - d3.min(rawData, d => +d.Mentality))/(d3.max(rawData, d => +d.Mentality) - d3.min(rawData, d => +d.Mentality)))
+                +(((+d.Movement) - d3.min(rawData, d => +d.Movement))/(d3.max(rawData, d => +d.Movement) - d3.min(rawData, d => +d.Movement)))
+                +(((+d.potential) - d3.min(rawData, d => +d.potential))/(d3.max(rawData, d => +d.potential) - d3.min(rawData, d => +d.potential)))
+                +(((+d.Power) - d3.min(rawData, d => +d.Power))/(d3.max(rawData, d => +d.Power) - d3.min(rawData, d => +d.Power)))
+                +(((+d.Skill) - d3.min(rawData, d => +d.Skill))/(d3.max(rawData, d => +d.Skill) - d3.min(rawData, d => +d.Skill)))
+                +(((+d.skill_moves) - d3.min(rawData, d => +d.skill_moves))/(d3.max(rawData, d => +d.skill_moves) - d3.min(rawData, d => +d.skill_moves)))
+                +(((+d['Value(EUR)']) - d3.min(rawData, d => +d['Value(EUR)']))/(d3.max(rawData, d => +d['Value(EUR)']) - d3.min(rawData, d => +d['Value(EUR)'])))
+                +(((+d.wage_eur) - d3.min(rawData, d => +d.wage_eur))/(d3.max(rawData, d => +d.wage_eur) - d3.min(rawData, d => +d.wage_eur))))
+                /13) * (bubbleWidth),
+            y: (((((+d.Overall) - d3.min(rawData, d => +d.Overall))/(d3.max(rawData, d => +d.Overall) - d3.min(rawData, d => +d.Overall)))
+                +(((+d.Defending) - d3.min(rawData, d => +d.Defending))/(d3.max(rawData, d => +d.Defending) - d3.min(rawData, d => +d.Defending)))
+                +(((+d.Attacking) - d3.min(rawData, d => +d.Attacking))/(d3.max(rawData, d => +d.Attacking) - d3.min(rawData, d => +d.Attacking)))
+                +(((+d.Goalkeeping) - d3.min(rawData, d => +d.Goalkeeping))/(d3.max(rawData, d => +d.Goalkeeping) - d3.min(rawData, d => +d.Goalkeeping)))
+                +(((+d.Age) - d3.min(rawData, d => +d.Age))/(d3.max(rawData, d => +d.Age) - d3.min(rawData, d => +d.Age)))
+                +(((+d.Mentality) - d3.min(rawData, d => +d.Mentality))/(d3.max(rawData, d => +d.Mentality) - d3.min(rawData, d => +d.Mentality)))
+                +(((+d.Movement) - d3.min(rawData, d => +d.Movement))/(d3.max(rawData, d => +d.Movement) - d3.min(rawData, d => +d.Movement)))
+                +(((+d.potential) - d3.min(rawData, d => +d.potential))/(d3.max(rawData, d => +d.potential) - d3.min(rawData, d => +d.potential)))
+                +(((+d.Power) - d3.min(rawData, d => +d.Power))/(d3.max(rawData, d => +d.Power) - d3.min(rawData, d => +d.Power)))
+                +(((+d.Skill) - d3.min(rawData, d => +d.Skill))/(d3.max(rawData, d => +d.Skill) - d3.min(rawData, d => +d.Skill)))
+                +(((+d.skill_moves) - d3.min(rawData, d => +d.skill_moves))/(d3.max(rawData, d => +d.skill_moves) - d3.min(rawData, d => +d.skill_moves)))
+                +(((+d['Value(EUR)']) - d3.min(rawData, d => +d['Value(EUR)']))/(d3.max(rawData, d => +d['Value(EUR)']) - d3.min(rawData, d => +d['Value(EUR)'])))
+                +(((+d.wage_eur) - d3.min(rawData, d => +d.wage_eur))/(d3.max(rawData, d => +d.wage_eur) - d3.min(rawData, d => +d.wage_eur))))
+                /13) * (bubbleHeight)
         }))
 
         return myNodes;
