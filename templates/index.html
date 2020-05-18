@@ -1,40 +1,104 @@
+{#<!DOCTYPE html>#}
+{#<html>#}
+{#<head>#}
+{#    <title>Lab 2: US Pollution Analysis</title>#}
+{#    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>#}
+{#    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">#}
+{#</head>#}
+{#<body>#}
+{#<div class="page_title">#}
+{#    <header>United States Pollution Analysis - Data Reduction</header>#}
+{#</div>#}
+{#<div class="sidebar">#}
+{#    <header>Tasks:</header>#}
+{#    <ul id="tasks-menu-list">#}
+{#        <li class="list-item active" value="screePCA">Scree plot - PCA</li>#}
+{#        <li class="list-item" value="screePCALoadings">Scree plot - PCA loadings</li>#}
+{#        <li class="list-item" value="scatter2PCA">Scatter plot - 2 PCA vectors</li>#}
+{#        <li class="list-item" value="mdsEu">MDS - Euclidian</li>#}
+{#        <li class="list-item" value="mdsCo">MDS - Correlation</li>#}
+{#        <li class="list-item" value="scatterMa">Scatter plot matrix</li>#}
+{#    </ul>#}
+{#    <header>Data type:</header>#}
+{#    <ul id="data-menu-list">#}
+{#        <li value="og" class="list-item active">Original</li>#}
+{#        <li value="rn" class="list-item">Random Sampled</li>#}
+{#        <li value="st" class="list-item">Stratified Sampled</li>#}
+{#    </ul>#}
+{#</div>#}
+{##}
+{#<div id='layout'>#}
+{#    <div id='container'>#}
+{#        <svg />#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>#}
+{#<script src="https://d3js.org/d3.v5.min.js"></script>#}
+{#<script src="{{ url_for('static', filename='index.js') }}"></script>#}
+{#</body>#}
+{#</html>#}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Lab 2: US Pollution Analysis</title>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+{#    <link rel = "stylesheet" type="text/css" href="style.css">#}
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <title>Football Clubs</title>
 </head>
 <body>
-<div class="page_title">
-    <header>United States Pollution Analysis - Data Reduction</header>
-</div>
-<div class="sidebar">
-    <header>Tasks:</header>
-    <ul id="tasks-menu-list">
-        <li class="list-item active" value="screePCA">Scree plot - PCA</li>
-        <li class="list-item" value="screePCALoadings">Scree plot - PCA loadings</li>
-        <li class="list-item" value="scatter2PCA">Scatter plot - 2 PCA vectors</li>
-        <li class="list-item" value="mdsEu">MDS - Euclidian</li>
-        <li class="list-item" value="mdsCo">MDS - Correlation</li>
-        <li class="list-item" value="scatterMa">Scatter plot matrix</li>
-    </ul>
-    <header>Data type:</header>
-    <ul id="data-menu-list">
-        <li value="og" class="list-item active">Original</li>
-        <li value="rn" class="list-item">Random Sampled</li>
-        <li value="st" class="list-item">Stratified Sampled</li>
-    </ul>
-</div>
 
-<div id='layout'>
-    <div id='container'>
-        <svg />
+<!--<div class="jumbotron big-banner">-->
+<nav class="navbar navbar-expand-sm navbar-dark title-bar text-center">
+    <a class="navbar-brand title-text" href="#"><h5>Football Clubs in Europe's Top 5 Leagues</h5></a>
+</nav>
+<div class="container my-main-container">
+    <div class="row my-first-row">
+        <div class="col-9 col-md-offset-2 my-par-col parcoords">
+
+        </div>
+        <div class="col-3 col-md-offset-2 my-bubble-col bubble">
+
+        </div>
+    </div>
+    <div class="row my-second-row">
+        <div class="col-3 col-md-offset-2 my-scatter-col scatterplot">
+
+        </div>
+        <div class="col-3 col-md-offset-2 my-stackedbar-col stackedbar">
+
+        </div>
+        <div class="col-3 col-md-offset-2 my-stackedbar2-col stackedbar2">
+
+        </div>
+        <div class="col-3 col-md-offset-2 my-pie-col pieplot">
+
+        </div>
     </div>
 </div>
+<!--</div>-->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://d3js.org/d3.v5.min.js"></script>
-<script src="{{ url_for('static', filename='index.js') }}"></script>
+<script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+<script src="https://bl.ocks.org/syntagmatic/raw/3341641/render-queue.js"></script>
+{#<script src='parcoords.js'></script>#}
+<script src="{{ url_for('static', filename='parcoords.js') }}"></script>
+{#<script src='scatter.js'></script>#}
+<script src="{{ url_for('static', filename='scatter.js') }}"></script>
+{#<script src='bubble.js'></script>#}
+<script src="{{ url_for('static', filename='bubble.js') }}"></script>
+{#<script src='matches.js'></script>#}
+<script src="{{ url_for('static', filename='matches.js') }}"></script>
+{#<script src='goals.js'></script>#}
+<script src="{{ url_for('static', filename='goals.js') }}"></script>
+{#<script src='pie.js'></script>#}
+<script src="{{ url_for('static', filename='pie.js') }}"></script>
 </body>
 </html>
+
