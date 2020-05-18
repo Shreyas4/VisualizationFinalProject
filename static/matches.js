@@ -1,8 +1,6 @@
 var stackedBarHeight = d3.select(".my-stackedbar-col").node().getBoundingClientRect().height;
 var stackedBarWidth = d3.select(".my-stackedbar-col").node().getBoundingClientRect().width;
 
-var dummy_clubs_set = ["Tottenham Hotspur"];
-
 function drawMatchesChart(dummy_clubs_set){
     var season_wise_stats_for_stacked_bar = [
         {"Season": "2014-15", "Pld":0, "W":0, "D":0, "L":0},
@@ -139,4 +137,11 @@ function drawMatchesChart(dummy_clubs_set){
         .attr("font-size", "12px")
         .attr("font-weight", "bold");
 }
+
+const dummy_clubs_set = [];
+d3.csv("static/Club_AggData.csv", function(error, data) {
+    data.map(function (d) {
+        dummy_clubs_set.push(d.Club);
+    })
+});
 drawMatchesChart(dummy_clubs_set);

@@ -112,7 +112,9 @@ var canvas = parCoordContainer.append("canvas")
     .style("margin-left", parCoordMargin.left + "px");
 
 var canvasLinesContext = canvas.node().getContext("2d");
-canvasLinesContext.lineWidth = 1;
+canvasLinesContext.globalCompositeOperation = 'destination-over';
+canvasLinesContext.globalAlpha = 0.15;
+canvasLinesContext.lineWidth = 1.5;
 
 var parCoordAxes = parCoordSvg.selectAll(".axis")
     .data(dimensions)
@@ -147,7 +149,7 @@ d3.csv("static/Club_AggData.csv", function(error, data) {
     var render = renderQueue(draw).rate(5);
 
     canvasLinesContext.clearRect(0,0,parCoordWidth,parCoordHeight);
-    canvasLinesContext.globalAlpha = d3.min([3/Math.pow(data.length,0.3),1]);
+    canvasLinesContext.globalAlpha = d3.min([1.35/Math.pow(data.length,0.3),1]);
     render(data);
 
     parCoordAxes.append("g")
@@ -222,7 +224,7 @@ d3.csv("static/Club_AggData.csv", function(error, data) {
         });
 
         canvasLinesContext.clearRect(0,0,parCoordWidth,parCoordHeight);
-        canvasLinesContext.globalAlpha = d3.min([3/Math.pow(selected.length,0.3),1]);
+        canvasLinesContext.globalAlpha = d3.min([1.35/Math.pow(selected.length,0.3),1]);
         render(selected);
         updateScatterOnSelectionFromParallelCoordinates(selected.map(function (d) {
             return d.Club;
@@ -248,7 +250,7 @@ d3.csv("static/Club_AggData.csv", function(error, data) {
         });
 
         canvasLinesContext.clearRect(0,0,parCoordWidth,parCoordHeight);
-        canvasLinesContext.globalAlpha = d3.min([3/Math.pow(selected.length,0.3),1]);
+        canvasLinesContext.globalAlpha = d3.min([1.35/Math.pow(selected.length,0.3),1]);
         render(selected);
         updateScatterOnSelectionFromParallelCoordinates(selected.map(function (d) {
             return d.Club;

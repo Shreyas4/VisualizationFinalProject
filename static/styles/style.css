@@ -13,7 +13,7 @@
 }
 
 .title-bar{
-    background: #0a0000;
+    background: rgba(0, 0, 0, 0.93);
     font-weight: bold;
     /*align: center;*/
 }
@@ -41,12 +41,12 @@ body {
 }
 
 .my-par-col, .my-pie-col, .my-bubble-col, .my-scatter-col, .my-stackedbar-col, .my-stackedbar2-col {
-    background: #0a0000;
+    background: rgba(0, 0, 0, 0.93);
     border: 3px solid transparent;
     background-clip:padding-box;
     color: azure;
     padding: 8px;
-    opacity: 0.85;
+    opacity: 0.9;
 }
 /*-----------------Parallel Coordinates-------------------*/
 
@@ -61,7 +61,7 @@ body {
 }
 
 .parcoords canvas {
-  opacity: 0.9;
+  opacity: 1;
     pointer-events: none;
 }
 
@@ -116,8 +116,7 @@ body {
 }
 
 .brush .extent {
-    fill-opacity: .3;
-    stroke: #fff;
+    stroke: rgba(255, 255, 255, 0.47);
     stroke-width: 1px;
 }
 

@@ -1,35 +1,33 @@
-var goalsBarHeight = d3.select(".my-stackedbar2-col").node().getBoundingClientRect().height;
-var goalsBarWidth = d3.select(".my-stackedbar2-col").node().getBoundingClientRect().width;
-
-var dummy_clubs_set_for_goals = ["Tottenham Hotspur"];
+const goalsBarHeight = d3.select(".my-stackedbar2-col").node().getBoundingClientRect().height;
+const goalsBarWidth = d3.select(".my-stackedbar2-col").node().getBoundingClientRect().width;
 
 function drawGoalsChart(dummy_clubs_set_for_goals) {
-    var season_wise_stats_for_goals_bar = [
-        {"Season": "2014-15", "GA":0, "GF":0},
-        {"Season": "2015-16", "GA":0, "GF":0},
-        {"Season": "2016-17", "GA":0, "GF":0},
-        {"Season": "2017-18", "GA":0, "GF":0},
-        {"Season": "2018-19", "GA":0, "GF":0},
-        {"Season": "2019-20", "GA":0, "GF":0}
+    const season_wise_stats_for_goals_bar = [
+        {"Season": "2014-15", "GA": 0, "GF": 0},
+        {"Season": "2015-16", "GA": 0, "GF": 0},
+        {"Season": "2016-17", "GA": 0, "GF": 0},
+        {"Season": "2017-18", "GA": 0, "GF": 0},
+        {"Season": "2018-19", "GA": 0, "GF": 0},
+        {"Season": "2019-20", "GA": 0, "GF": 0}
     ];
     d3.select(".stackedbar2").selectAll("svg").remove();
-    var goalsBarSvg = d3.select(".stackedbar2").append("svg").attr("height", goalsBarHeight-20).attr("width", goalsBarWidth),
+    const goalsBarSvg = d3.select(".stackedbar2").append("svg").attr("height", goalsBarHeight - 20).attr("width", goalsBarWidth),
         goalsBarMargin = {top: 30, right: 40, bottom: 50, left: 70},
         goalsChartWidth = +goalsBarSvg.attr("width") - goalsBarMargin.left - goalsBarMargin.right,
         goalsChartHeight = +goalsBarSvg.attr("height") - goalsBarMargin.top - goalsBarMargin.bottom,
         goalsLegend = goalsBarSvg.append("g").attr("transform", "translate(" + goalsBarMargin.left + "," + goalsBarMargin.top + ")");
     // set x scale
-    var goalsBarXScale = d3.scaleBand()
-        .rangeRound([0, goalsChartWidth-45])
+    const goalsBarXScale = d3.scaleBand()
+        .rangeRound([0, goalsChartWidth - 45])
         .paddingInner(0.3)
         .align(0.1);
 
     // set y scale
-    var goalsBarYScale = d3.scaleLinear()
+    const goalsBarYScale = d3.scaleLinear()
         .rangeRound([goalsChartHeight, 0]);
 
     // set the colors
-    var goalsBarZScale = d3.scaleOrdinal()
+    const goalsBarZScale = d3.scaleOrdinal()
         .range(["#CCCC00", "#0F3B5F"]);
     // load the csv and create the chart
     d3.csv("static/league_tables.csv", function(error, data) {
@@ -135,5 +133,10 @@ function drawGoalsChart(dummy_clubs_set_for_goals) {
         .attr("font-size", "12px")
         .attr("font-weight", "bold");
 }
-
+const dummy_clubs_set_for_goals = [];
+d3.csv("static/Club_AggData.csv", function(error, data) {
+    data.map(function (d) {
+        dummy_clubs_set_for_goals.push(d.Club);
+    })
+});
 drawGoalsChart(dummy_clubs_set_for_goals);
