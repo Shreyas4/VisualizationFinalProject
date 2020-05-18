@@ -27,7 +27,7 @@ class Gauge {
         ;
 
         const g = pieSvg.append('g')
-            .attr('transform', `translate(${width/2},${height/2})`)
+            .attr('transform', `translate(${width/2-40},${height/2+20})`)
         ;
 
         g.selectAll('.chart-arc')
@@ -67,37 +67,28 @@ class Gauge {
         })
         ;
 
-        const l = pieSvg.append('g')
-            .attr('transform', `translate(0,${height-20})`);
-
-
-        const xl = d3.scaleBand()
-            .range([0, width])
-            .padding(0.3)
-            .domain(data.map(d => d.label))
-        ;
-
-        const legend = l.selectAll('.pie-legend')
+        var piePlotLegend = pieSvg.append("g")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", 10)
+            .attr("text-anchor", "end")
+            .selectAll("g")
             .data(color.domain())
-            .enter()
-            .append('g')
-            .attr('class', 'pie-legend')
-            .attr('transform', (d, i) => `translate(${xl(d)+20},0)`)
-        ;
+            .enter().append("g")
+            .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
-        legend.append('rect')
-            .attr('width', 12)
-            .attr('height', 12)
-            .style('fill', color)
-        ;
+        piePlotLegend.append("rect")
+            .attr("x", width-40)
+            .attr("y", height-100)
+            .attr("width", 19)
+            .attr("height", 19)
+            .attr("fill", color);
 
-        legend.append('text')
-            .attr('text-anchor', 'middle')
-            .attr('x', 0)
-            .attr('y', -10)
-            .style('fill', '#fff')
-            .text(d => d)
-        ;
+        piePlotLegend.append("text")
+            .attr("class", "legend-text")
+            .attr("x", width-45)
+            .attr("y", height-100+9.5)
+            .attr("dy", "0.32em")
+            .text(function(d) { return d; });
 
         var pieChartTooltip = pieSvg.append("g")
             .attr("class", "stackedBar-tooltip")
