@@ -5,7 +5,7 @@ var parCoordMargin = {top: 30, right: 75, bottom: 40, left: 60},
 
 var clusterColors = d3.scaleOrdinal()
     .domain([0,1,2,3])
-    .range([ "#CC9752", "#0F3B5F", "#CCCC00","#E5DBCF"]);
+    .range(["#858741", "#E4D866", "#F19B47","#CB4747"]);
 
 // "#44c5cb", "#fce315", "#f53d52", "#ff9200"
 // "#f8ffca", "#b6d084", "#ffcb32", "#2f7604"
@@ -14,6 +14,7 @@ var clusterColors = d3.scaleOrdinal()
 //"#900c3f", "#c70039", "#ff5733", "#ffc300"
 //"#fff474", "#f06553", "#3c3b5f", "#683551"
 // "#CC9752", "#0F3B5F", "#CCCC00","#E5DBCF"
+// "#858741", "#E4D866", "#F19B47","#CB4747"
 
 var parallelCoordTypes = {
     "Number": {

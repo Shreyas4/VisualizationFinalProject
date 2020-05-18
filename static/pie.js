@@ -12,7 +12,8 @@ class Gauge {
 
         const color = d3.scaleOrdinal()
             .domain(['Bundesliga', 'Serie A', 'Ligue 1', 'Premier League', 'La Liga'])
-            .range([ "#3b2912", "#896029", "#ca954e","#dcb889", "#f3e7d8"])
+            // .range([ "#3b2912", "#896029", "#ca954e","#dcb889", "#f3e7d8"])
+            .range([ "#003F5C", "#58508D", "#BC5090","#FF6361", "#FFA600"])
         ;
 
         const r = Math.min(width, height) / 3;

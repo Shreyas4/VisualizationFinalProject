@@ -28,7 +28,7 @@ function drawGoalsChart(dummy_clubs_set_for_goals) {
 
     // set the colors
     const goalsBarZScale = d3.scaleOrdinal()
-        .range(["#CCCC00", "#0F3B5F"]);
+        .range(["#F19B47","#CB4747"]);
     // load the csv and create the chart
     d3.csv("static/league_tables.csv", function(error, data) {
         if (error) throw error;

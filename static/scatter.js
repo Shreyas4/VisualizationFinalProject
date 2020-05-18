@@ -53,7 +53,7 @@ d3.csv("static/Club_AggData.csv", function(data) {
     var color = d3.scaleOrdinal()
         .domain([0,1,2,3])
         // .range(["#f8ffca", "#b6d084", "#ffcb32", "#2f7604"]);
-        .range([ "#CC9752", "#0F3B5F", "#CCCC00","#E5DBCF"]);
+        .range(["#858741", "#E4D866", "#F19B47","#CB4747"]);
 
 
     // Add dots
