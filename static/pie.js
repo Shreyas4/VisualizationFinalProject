@@ -90,6 +90,13 @@ class Gauge {
             .attr("dy", "0.32em")
             .text(function(d) { return d; });
 
+        pieSvg.append("text")
+            .attr("class", "title-text")
+            .attr("x", width-200)
+            .attr("y", 45)
+            .attr("fill", "#fff")
+            .text("League Composition");
+
         var pieChartTooltip = pieSvg.append("g")
             .attr("class", "stackedBar-tooltip")
             .style("display", "none");

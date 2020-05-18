@@ -185,6 +185,13 @@ function bubbleChart() {
             .attr("dy", "0.32em")
             .text(function(d) { return "Cluster "+(d+1); });
 
+        d3.select(".bubble").select("svg").append("text")
+            .attr("class", "title-text")
+            .attr("x", bubbleWidth-140)
+            .attr("y", 40)
+            .attr("fill", "#fff")
+            .text("Clubs by size");
+
         // set simulation's nodes to our newly created nodes array
         // simulation starts running automatically once nodes are set
         simulation.nodes(bubbleNodes)

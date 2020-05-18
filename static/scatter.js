@@ -100,6 +100,13 @@ d3.csv("static/Club_AggData.csv", function(data) {
             .attr("dy", "0.32em")
             .text(function(d) { return "Cluster "+(d+1); });
 
+        svgScatter.append("text")
+            .attr("class", "title-text")
+            .attr("x", scatterWidth-120)
+            .attr("y", 35)
+            .attr("fill", "#fff")
+            .text("PCA Plot");
+
     // Function that is triggered when brushing is performed
     function updateScatterOnBrush() {
         brushExtent = d3.event.selection

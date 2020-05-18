@@ -119,6 +119,13 @@ function drawMatchesChart(dummy_clubs_set){
             .attr("y", stackChartHeight-35+9.5)
             .attr("dy", "0.32em")
             .text(function(d) { return d; });
+
+        matchesStackedBarChart.append("text")
+            .attr("class", "title-text")
+            .attr("x", stackChartWidth-230)
+            .attr("y", 15)
+            .attr("fill", "#fff")
+            .text("Match results per season");
     });
     // Prep the tooltip bits, initial display is hidden
     var stackedBarTooltip = stackedBarSvg.append("g")

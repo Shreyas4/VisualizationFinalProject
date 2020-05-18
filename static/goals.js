@@ -115,6 +115,13 @@ function drawGoalsChart(dummy_clubs_set_for_goals) {
             .attr("y", goalsChartHeight-20+9.5)
             .attr("dy", "0.32em")
             .text(function(d) { return d; });
+
+        goalsStackedBarChart.append("text")
+            .attr("class", "title-text")
+            .attr("x", goalsChartWidth-270)
+            .attr("y", 15)
+            .attr("fill", "#fff")
+            .text("Ratio of Goals F/A per season");
     });
     // Prep the tooltip bits, initial display is hidden
     var goalsBarTooltip = goalsBarSvg.append("g")

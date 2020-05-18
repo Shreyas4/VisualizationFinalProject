@@ -26,9 +26,9 @@ body {
 
 .title-text {
     font-family: 'Open Sans';
-    font-size: 25px;
+    font-size: large;
     color: white;
-    position: center;
+    /*position: center;*/
 }
 
 .my-main-container {

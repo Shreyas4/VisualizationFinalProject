@@ -22,7 +22,7 @@ var parallelCoordTypes = {
         coerce: function(d) { return +d; },
         extent: d3.extent,
         within: function(d, extent, dim) { return extent[0] <= dim.scale(d) && dim.scale(d) <= extent[1]; },
-        defaultScale: d3.scaleLinear().range([parCoordInnerHeight, 50])
+        defaultScale: d3.scaleLinear().range([parCoordInnerHeight, 60])
     }
 };
 
@@ -161,7 +161,7 @@ d3.csv("static/Club_AggData.csv", function(error, data) {
         .append("text")
         .attr("class", "title")
         .attr("text-anchor", "middle")
-        .attr("y", "46")
+        .attr("y", "56")
         .text(function(d) { return "description" in d ? d.description : d.key; });
 
     // Add and store a brush for each axis.
@@ -169,7 +169,7 @@ d3.csv("static/Club_AggData.csv", function(error, data) {
         .attr("class", "brush")
         .each(function(d) {
             d3.select(this).call(d.brush = d3.brushY()
-                .extent([[-10,50], [10,parCoordInnerHeight]])
+                .extent([[-10,60], [10,parCoordInnerHeight]])
                 .on("start", brushstart)
                 .on("brush", brush)
                 .on("end", brush)
@@ -207,6 +207,13 @@ d3.csv("static/Club_AggData.csv", function(error, data) {
             .attr("y", parCoordHeight-45+9.5)
             .attr("dy", "0.32em")
             .text(function(d) { return "Cluster "+(d+1); });
+
+        d3.select(".parcoords").select("svg").append("text")
+            .attr("class", "title-text")
+            .attr("x", parCoordWidth-120)
+            .attr("y", 35)
+            .attr("fill", "#fff")
+            .text("Parallel Coordinates Plot");
 
     function draw(d) {
         canvasLinesContext.strokeStyle = clusterColors(d.cluster);
