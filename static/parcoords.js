@@ -32,6 +32,11 @@ var dimensions = [
         type: parallelCoordTypes["Number"]
     },
     {
+        key: "skill_moves",
+        description: "Skill Moves",
+        type: parallelCoordTypes["Number"]
+    },
+    {
         key: "Attacking",
         description: "Attacking",
         type: parallelCoordTypes["Number"]
@@ -59,11 +64,6 @@ var dimensions = [
     {
         key: "Skill",
         description: "Skill",
-        type: parallelCoordTypes["Number"]
-    },
-    {
-        key: "skill_moves",
-        description: "Skill Moves",
         type: parallelCoordTypes["Number"]
     },
     {

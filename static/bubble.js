@@ -141,6 +141,6 @@ d3.csv("static/Club_AggData.csv", function display(data) {
     myBubbleChart('.bubble', data);
 });
 
-$.post("", {'task': task.value, 'datatype': datatype.value}, function (data_received) {
-        updateChart(data_received, task, datatype);
-    });
+// $.post("", {'task': task.value, 'datatype': datatype.value}, function (data_received) {
+//         updateChart(data_received, task, datatype);
+//     });
