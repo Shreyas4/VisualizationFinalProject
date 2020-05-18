@@ -12,19 +12,19 @@ function drawGoalsChart(dummy_clubs_set_for_goals) {
     ];
     d3.select(".stackedbar2").selectAll("svg").remove();
     const goalsBarSvg = d3.select(".stackedbar2").append("svg").attr("height", goalsBarHeight - 20).attr("width", goalsBarWidth),
-        goalsBarMargin = {top: 30, right: 40, bottom: 50, left: 70},
+        goalsBarMargin = {top: 30, right: 40, bottom: 40, left: 50},
         goalsChartWidth = +goalsBarSvg.attr("width") - goalsBarMargin.left - goalsBarMargin.right,
         goalsChartHeight = +goalsBarSvg.attr("height") - goalsBarMargin.top - goalsBarMargin.bottom,
-        goalsLegend = goalsBarSvg.append("g").attr("transform", "translate(" + goalsBarMargin.left + "," + goalsBarMargin.top + ")");
+        goalsStackedBarChart = goalsBarSvg.append("g").attr("transform", "translate(" + goalsBarMargin.left + "," + goalsBarMargin.top + ")");
     // set x scale
     const goalsBarXScale = d3.scaleBand()
-        .rangeRound([0, goalsChartWidth - 45])
+        .rangeRound([0, goalsChartWidth - 60])
         .paddingInner(0.3)
         .align(0.1);
 
     // set y scale
     const goalsBarYScale = d3.scaleLinear()
-        .rangeRound([goalsChartHeight, 0]);
+        .rangeRound([goalsChartHeight, 50]);
 
     // set the colors
     const goalsBarZScale = d3.scaleOrdinal()
@@ -52,7 +52,7 @@ function drawGoalsChart(dummy_clubs_set_for_goals) {
             return d.GF+d.GA; })]).nice();
         goalsBarZScale.domain(keys);
 
-        goalsLegend.append("g")
+        goalsStackedBarChart.append("g")
             .selectAll("g")
             .data(d3.stack().keys(keys)(season_wise_stats_for_goals_bar))
             .enter().append("g")
@@ -75,12 +75,12 @@ function drawGoalsChart(dummy_clubs_set_for_goals) {
                 goalsBarTooltip.select("text").text(d[1]-d[0]);
             });
 
-        goalsLegend.append("g")
+        goalsStackedBarChart.append("g")
             .attr("class", "axis")
             .attr("transform", "translate(0," + goalsChartHeight + ")")
             .call(d3.axisBottom(goalsBarXScale));
 
-        goalsLegend.append("g")
+        goalsStackedBarChart.append("g")
             .attr("class", "axis")
             .call(d3.axisLeft(goalsBarYScale).ticks(null, "s"))
             .append("text")
@@ -93,7 +93,7 @@ function drawGoalsChart(dummy_clubs_set_for_goals) {
             // .attr("font-weight", "bold")
             .attr("text-anchor", "Middle");
 
-        var goalsBarLegend = goalsLegend.append("g")
+        var goalsBarLegend = goalsStackedBarChart.append("g")
             .attr("font-family", "sans-serif")
             .attr("font-size", 10)
             .attr("text-anchor", "end")
@@ -104,6 +104,7 @@ function drawGoalsChart(dummy_clubs_set_for_goals) {
 
         goalsBarLegend.append("rect")
             .attr("x", goalsChartWidth - 19)
+            .attr("y", goalsChartHeight-20)
             .attr("width", 19)
             .attr("height", 19)
             .attr("fill", goalsBarZScale);
@@ -111,7 +112,7 @@ function drawGoalsChart(dummy_clubs_set_for_goals) {
         goalsBarLegend.append("text")
             .attr("class", "legend-text")
             .attr("x", goalsChartWidth - 24)
-            .attr("y", 9.5)
+            .attr("y", goalsChartHeight-20+9.5)
             .attr("dy", "0.32em")
             .text(function(d) { return d; });
     });

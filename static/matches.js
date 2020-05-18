@@ -12,19 +12,19 @@ function drawMatchesChart(dummy_clubs_set){
     ];
     d3.select(".stackedbar").selectAll("svg").remove();
     var stackedBarSvg = d3.select(".stackedbar").append("svg").attr("height", stackedBarHeight-20).attr("width", stackedBarWidth),
-        stackedBarMargin = {top: 30, right: 40, bottom: 50, left: 70},
+        stackedBarMargin = {top: 30, right: 40, bottom: 40, left: 50},
         stackChartWidth = +stackedBarSvg.attr("width") - stackedBarMargin.left - stackedBarMargin.right,
         stackChartHeight = +stackedBarSvg.attr("height") - stackedBarMargin.top - stackedBarMargin.bottom,
-        legendG = stackedBarSvg.append("g").attr("transform", "translate(" + stackedBarMargin.left + "," + stackedBarMargin.top + ")");
+        matchesStackedBarChart = stackedBarSvg.append("g").attr("transform", "translate(" + stackedBarMargin.left + "," + stackedBarMargin.top + ")");
     // set x scale
     var stackedBarXScale = d3.scaleBand()
-        .rangeRound([0, stackChartWidth-45])
+        .rangeRound([0, stackChartWidth-60])
         .paddingInner(0.3)
         .align(0.1);
 
     // set y scale
     var stackedBarYScale = d3.scaleLinear()
-        .rangeRound([stackChartHeight, 0]);
+        .rangeRound([stackChartHeight, 50]);
 
     // set the colors
     var stackedBarZScale = d3.scaleOrdinal()
@@ -54,7 +54,7 @@ function drawMatchesChart(dummy_clubs_set){
             return d.Pld; })]).nice();
         stackedBarZScale.domain(keys);
 
-        legendG.append("g")
+        matchesStackedBarChart.append("g")
             .selectAll("g")
             .data(d3.stack().keys(keys)(season_wise_stats_for_stacked_bar))
             .enter().append("g")
@@ -79,12 +79,12 @@ function drawMatchesChart(dummy_clubs_set){
                 stackedBarTooltip.select("text").text(d[1]-d[0]);
             });
 
-        legendG.append("g")
+        matchesStackedBarChart.append("g")
             .attr("class", "axis")
             .attr("transform", "translate(0," + stackChartHeight + ")")
             .call(d3.axisBottom(stackedBarXScale));
 
-        legendG.append("g")
+        matchesStackedBarChart.append("g")
             .attr("class", "axis")
             .call(d3.axisLeft(stackedBarYScale).ticks(null, "s"))
             .append("text")
@@ -97,7 +97,7 @@ function drawMatchesChart(dummy_clubs_set){
             // .attr("font-weight", "bold")
             .attr("text-anchor", "Middle");
 
-        var stackedBarLegend = legendG.append("g")
+        var stackedBarLegend = matchesStackedBarChart.append("g")
             .attr("font-family", "sans-serif")
             .attr("font-size", 10)
             .attr("text-anchor", "end")
@@ -108,6 +108,7 @@ function drawMatchesChart(dummy_clubs_set){
 
         stackedBarLegend.append("rect")
             .attr("x", stackChartWidth - 19)
+            .attr("y", stackChartHeight-35)
             .attr("width", 19)
             .attr("height", 19)
             .attr("fill", stackedBarZScale);
@@ -115,7 +116,7 @@ function drawMatchesChart(dummy_clubs_set){
         stackedBarLegend.append("text")
             .attr("class", "legend-text")
             .attr("x", stackChartWidth - 24)
-            .attr("y", 9.5)
+            .attr("y", stackChartHeight-35+9.5)
             .attr("dy", "0.32em")
             .text(function(d) { return d; });
     });

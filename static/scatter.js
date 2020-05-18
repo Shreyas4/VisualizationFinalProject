@@ -1,4 +1,4 @@
-var scatterMargin = {top: 10, right: 10, bottom: 10, left: 10},
+var scatterMargin = {top: 10, right: 10, bottom: 10, left: 15},
     scatterWidth = d3.select(".my-scatter-col").node().getBoundingClientRect().width - scatterMargin.left - scatterMargin.right,
     scatterHeight = d3.select(".my-scatter-col").node().getBoundingClientRect().height - scatterMargin.top - scatterMargin.bottom;
 
@@ -20,10 +20,10 @@ d3.csv("static/Club_AggData.csv", function(data) {
     var pc1 = data.map(function (a) { return a.pc1*100;});
     var pc2 = data.map(function (a) { return a.pc2*100;})
     var scatterXScale = d3.scaleLinear()
-        .range([ 0, scatterWidth-20 ])
+        .range([ 0, scatterWidth-110 ])
         .domain([d3.min(pc1), d3.max(pc1)]);
     var scatterYScale = d3.scaleLinear()
-        .range([ scatterHeight-20, 0])
+        .range([ scatterHeight-30, 65])
         .domain([d3.min(pc2), d3.max(pc2)]);
     svgScatter.append("g")
         .call(d3.axisBottom(scatterXScale))
@@ -31,7 +31,7 @@ d3.csv("static/Club_AggData.csv", function(data) {
         .attr("transform", "translate(0," + scatterYScale(0) + ")")
         .append("text")
         .attr("class", "title")
-        .attr("x", scatterWidth-20)
+        .attr("x", scatterXScale(210))
         .attr("y", -6)
         .style("text-anchor", "end")
         .text("PC-1 (x100)");
@@ -71,11 +71,34 @@ d3.csv("static/Club_AggData.csv", function(data) {
     // Add brushing
     svgScatter
         .call( d3.brush()                 // Add the brush feature using the d3.brush function
-            .extent( [ [0,0], [scatterWidth,scatterHeight] ] ) // initialise the brush area: start at 0,0 and finishes at width,height: it means I select the whole graph area
+            .extent( [ [0,50], [scatterWidth-110,scatterHeight-25] ] ) // initialise the brush area: start at 0,0 and finishes at width,height: it means I select the whole graph area
             // .on("end brush", brushStart)
             .on("brush", updateScatterOnBrush)
             .on("end", updateScatterOnBrushEnd)// Each time the brush selection changes, trigger the 'updateChart' function
         )
+
+    var scatterplotLegend = svgScatter.append("g")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", 10)
+            .attr("text-anchor", "end")
+            .selectAll("g")
+            .data([0,1,2,3])
+            .enter().append("g")
+            .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+        scatterplotLegend.append("rect")
+            .attr("x", scatterWidth - 50)
+            .attr("y", scatterHeight-100)
+            .attr("width", 19)
+            .attr("height", 19)
+            .attr("fill", color);
+
+        scatterplotLegend.append("text")
+            .attr("class", "legend-text")
+            .attr("x", scatterWidth - 55)
+            .attr("y", scatterHeight-100+9.5)
+            .attr("dy", "0.32em")
+            .text(function(d) { return "Cluster "+(d+1); });
 
     // Function that is triggered when brushing is performed
     function updateScatterOnBrush() {

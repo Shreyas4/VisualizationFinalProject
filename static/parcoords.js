@@ -22,7 +22,7 @@ var parallelCoordTypes = {
         coerce: function(d) { return +d; },
         extent: d3.extent,
         within: function(d, extent, dim) { return extent[0] <= dim.scale(d) && dim.scale(d) <= extent[1]; },
-        defaultScale: d3.scaleLinear().range([parCoordInnerHeight, 0])
+        defaultScale: d3.scaleLinear().range([parCoordInnerHeight, 50])
     }
 };
 
@@ -92,9 +92,9 @@ var dimensions = [
 
 var parCoordXScale = d3.scalePoint()
     .domain(d3.range(dimensions.length))
-    .range([0, parCoordWidth]);
+    .range([0, parCoordWidth-70]);
 
-var parCoordYScale = d3.axisLeft();
+var parCoordYScale = d3.axisLeft().ticks(null, "s");
 
 var parCoordContainer = d3.select(".parcoords")
     .style("width", parCoordWidth + parCoordMargin.left + parCoordMargin.right + "px")
@@ -161,6 +161,7 @@ d3.csv("static/Club_AggData.csv", function(error, data) {
         .append("text")
         .attr("class", "title")
         .attr("text-anchor", "middle")
+        .attr("y", "46")
         .text(function(d) { return "description" in d ? d.description : d.key; });
 
     // Add and store a brush for each axis.
@@ -168,7 +169,7 @@ d3.csv("static/Club_AggData.csv", function(error, data) {
         .attr("class", "brush")
         .each(function(d) {
             d3.select(this).call(d.brush = d3.brushY()
-                .extent([[-10,0], [10,parCoordHeight]])
+                .extent([[-10,50], [10,parCoordInnerHeight]])
                 .on("start", brushstart)
                 .on("brush", brush)
                 .on("end", brush)
@@ -183,6 +184,29 @@ d3.csv("static/Club_AggData.csv", function(error, data) {
             return [parCoordXScale(i),p.scale(d[p.key])];
         });
     }
+
+    var parCoordPlotLegend = d3.select(".parcoords").select("svg").append("g")
+            .attr("font-family", "sans-serif")
+            .attr("font-size", 10)
+            .attr("text-anchor", "end")
+            .selectAll("g")
+            .data([0,1,2,3])
+            .enter().append("g")
+            .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+        parCoordPlotLegend.append("rect")
+            .attr("x", parCoordWidth+75)
+            .attr("y", parCoordHeight -45)
+            .attr("width", 19)
+            .attr("height", 19)
+            .attr("fill", clusterColors);
+
+        parCoordPlotLegend.append("text")
+            .attr("class", "legend-text")
+            .attr("x", parCoordWidth+70)
+            .attr("y", parCoordHeight-45+9.5)
+            .attr("dy", "0.32em")
+            .text(function(d) { return "Cluster "+(d+1); });
 
     function draw(d) {
         canvasLinesContext.strokeStyle = clusterColors(d.cluster);
