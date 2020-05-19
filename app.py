@@ -5,9 +5,9 @@ import utils
 
 app = Flask(__name__)
 
-club_agg_df = pd.read_csv('FIFAData/Club_AggData.csv')
-league_tables_df = pd.read_csv('FIFAData/league_tables.csv')
-club_agg_request_response_df = utils.pcaKmeans(pd.read_csv('FIFAData/pre_PCA_data.csv'))
+club_agg_df = pd.read_csv('data/Club_AggData.csv')
+league_tables_df = pd.read_csv('data/league_tables.csv')
+club_agg_request_response_df = utils.pcaKmeans(pd.read_csv('data/pre_PCA_data.csv'))
 
 
 @app.route('/', methods=['POST', 'GET'])
