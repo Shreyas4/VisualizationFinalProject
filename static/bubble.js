@@ -136,31 +136,57 @@ function bubbleChart() {
         bubbles = elements
             .append('circle')
             .on('mouseover', function (d) {
-                elements.append("text")
-                    .attr('class', 'bubble-text')
-                    // .attr('dy', '.3em')
-                    .style('fill', '#fff')
-                    .style('text-anchor', 'middle')
-                    .attr('x', function() {
-                        return d.x;
-                    })
-                    .attr('y', function() {
-                        return d.y-10;
-                    })
-                    .text(function() {
-                        return d.Club;
-                    });
+                // elements.append("text")
+                //     .attr('class', 'bubble-text')
+                //     // .attr('dy', '.3em')
+                //     .style('fill', '#fff')
+                //     .style('text-anchor', 'middle')
+                //     .attr('x', function() {
+                //         return d.x;
+                //     })
+                //     .attr('y', function() {
+                //         return d.y-10;
+                //     })
+                //     .text(function() {
+                //         return d.Club;
+                //     });
+                bubblePlotTooltip.style("display", null);
             })
             .on('mouseout', function (d) {
-                d3.selectAll('.bubble-text')
-                    .remove()
+                // d3.selectAll('.bubble-text')
+                //     .remove()
+                bubblePlotTooltip.style("display", "none");
+            })
+            .on('mousemove', function (d) {
+                var xPosition = d3.mouse(this)[0]+10;
+                var yPosition = d3.mouse(this)[1]+10;
+                bubblePlotTooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
+                bubblePlotTooltip.select("text").text(d.Club)
+
             })
             .on('click', function (d) {
+                var xPosition = d3.mouse(this)[0]+10;
+                var yPosition = d3.mouse(this)[1]+10;
+                bubblePlotTooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
+                bubblePlotTooltip.select("text").text(d.Club)
                 brush2([d.Club]);
             })
             .classed('bubble2', true)
             .attr('r', d => d.radius)
             .attr('fill', d => fillColour(+d.cluster))
+
+        var bubblePlotTooltip = bubbleSvg.append("g")
+        .attr("class", "stackedBar-tooltip")
+        .style("display", "none");
+
+        bubblePlotTooltip.append("text")
+            // .attr("x", 30)
+            .attr("dy", "1.2em")
+            .style("text-anchor", "start")
+            .attr("fill", "#fff")
+            .attr("font-family", "Open Sans")
+            .attr("font-size", "18px")
+            .attr("font-weight", "bold");
 
          var bubblePlotLegend = d3.select(".bubble").select("svg").append("g")
             .attr("font-family", "sans-serif")
