@@ -92,7 +92,7 @@ class Gauge {
 
         pieSvg.append("text")
             .attr("class", "title-text")
-            .attr("x", width-200)
+            .attr("x", width-210)
             .attr("y", 45)
             .attr("fill", "#fff")
             .text("League Composition");
@@ -128,7 +128,8 @@ function drawPieChart(dummy_club_set_for_pie){
         {label: 'La Liga', value: 0}
     ];
     if (dummy_club_set_for_pie.length===0){
-        d3.csv("static/Club_AggData.csv", function (csv_data) {
+        $.post("", {'data_type': 'club_agg'}, function (data) {
+            csv_data = JSON.parse(data);
             csv_data.map(function (d) {
                 for (i=0; i<dict.length;i++){
                     if (dict[i].label===d['league']) {

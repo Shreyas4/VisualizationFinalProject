@@ -29,9 +29,8 @@ function drawMatchesChart(dummy_clubs_set){
     // set the colors
     var stackedBarZScale = d3.scaleOrdinal()
         .range(["#E4D866", "#F19B47","#CB4747"]);
-    // load the csv and create the chart
-    d3.csv("static/league_tables.csv", function(error, data) {
-        if (error) throw error;
+    $.post("", {'data_type': 'league_tables'}, function (data) {
+        data = JSON.parse(data);
         data.map(function (d) {
             for (i = 0; i < season_wise_stats_for_stacked_bar.length; i++) {
                 if ((d['Season'] === season_wise_stats_for_stacked_bar[i].Season) && dummy_clubs_set.includes(d['Club'])) {
@@ -42,7 +41,7 @@ function drawMatchesChart(dummy_clubs_set){
                 }
             }
         })
-        var keys = data.columns.slice(3, 6);
+        var keys = Object.keys(data[0]).slice(3, 6);
 
         data.sort(function(a) { return a.Season; });
         stackedBarXScale.domain(season_wise_stats_for_stacked_bar.map(function (d) {
@@ -147,7 +146,8 @@ function drawMatchesChart(dummy_clubs_set){
 }
 
 const dummy_clubs_set = [];
-d3.csv("static/Club_AggData.csv", function(error, data) {
+$.post("", {'data_type': 'club_agg'}, function (data) {
+    data = JSON.parse(data);
     data.map(function (d) {
         dummy_clubs_set.push(d.Club);
     })

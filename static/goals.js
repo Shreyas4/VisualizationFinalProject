@@ -29,9 +29,8 @@ function drawGoalsChart(dummy_clubs_set_for_goals) {
     // set the colors
     const goalsBarZScale = d3.scaleOrdinal()
         .range(["#F19B47","#CB4747"]);
-    // load the csv and create the chart
-    d3.csv("static/league_tables.csv", function(error, data) {
-        if (error) throw error;
+    $.post("", {'data_type': 'league_tables'}, function (data) {
+        data = JSON.parse(data);
         data.map(function (d) {
             for (i = 0; i < season_wise_stats_for_goals_bar.length; i++) {
                 if ((d['Season'] === season_wise_stats_for_goals_bar[i].Season) && dummy_clubs_set_for_goals.includes(d['Club'])) {
@@ -40,7 +39,7 @@ function drawGoalsChart(dummy_clubs_set_for_goals) {
                 }
             }
         })
-        var keys = data.columns.slice(6,8);
+        var keys = Object.keys(data[0]).slice(6,8);
 
         data.sort(function(a) { return a.Season; });
         goalsBarXScale.domain(season_wise_stats_for_goals_bar.map(function (d) {
@@ -142,7 +141,8 @@ function drawGoalsChart(dummy_clubs_set_for_goals) {
         .attr("font-weight", "bold");
 }
 const dummy_clubs_set_for_goals = [];
-d3.csv("static/Club_AggData.csv", function(error, data) {
+$.post("", {'data_type': 'club_agg'}, function (data) {
+    data = JSON.parse(data);
     data.map(function (d) {
         dummy_clubs_set_for_goals.push(d.Club);
     })

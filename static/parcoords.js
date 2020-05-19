@@ -124,17 +124,15 @@ var parCoordAxes = parCoordSvg.selectAll(".axis")
     .attr("transform", function(d,i) { return "translate(" + parCoordXScale(i) + ")"; });
 
 var brush2;
-
-d3.csv("static/Club_AggData.csv", function(error, data) {
-    if (error) throw error;
-
+$.post("", {'data_type': 'club_agg'}, function (data_received) {
+    data = JSON.parse(data_received);
     data.forEach(function(d) {
         dimensions.forEach(function(p) {
             d[p.key] = !d[p.key] ? null : p.type.coerce(d[p.key]);
         });
     });
 
-    // type/dimension default setting happens here
+// type/dimension default setting happens here
     dimensions.forEach(function(dim) {
         if (!("domain" in dim)) {
             // detect domain using dimension type's extent function
@@ -164,7 +162,7 @@ d3.csv("static/Club_AggData.csv", function(error, data) {
         .attr("y", "56")
         .text(function(d) { return "description" in d ? d.description : d.key; });
 
-    // Add and store a brush for each axis.
+// Add and store a brush for each axis.
     parCoordAxes.append("g")
         .attr("class", "brush")
         .each(function(d) {
@@ -186,34 +184,34 @@ d3.csv("static/Club_AggData.csv", function(error, data) {
     }
 
     var parCoordPlotLegend = d3.select(".parcoords").select("svg").append("g")
-            .attr("font-family", "sans-serif")
-            .attr("font-size", 10)
-            .attr("text-anchor", "end")
-            .selectAll("g")
-            .data([0,1,2,3])
-            .enter().append("g")
-            .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+        .attr("font-family", "sans-serif")
+        .attr("font-size", 10)
+        .attr("text-anchor", "end")
+        .selectAll("g")
+        .data([0,1,2,3])
+        .enter().append("g")
+        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
-        parCoordPlotLegend.append("rect")
-            .attr("x", parCoordWidth+75)
-            .attr("y", parCoordHeight -45)
-            .attr("width", 19)
-            .attr("height", 19)
-            .attr("fill", clusterColors);
+    parCoordPlotLegend.append("rect")
+        .attr("x", parCoordWidth+75)
+        .attr("y", parCoordHeight -45)
+        .attr("width", 19)
+        .attr("height", 19)
+        .attr("fill", clusterColors);
 
-        parCoordPlotLegend.append("text")
-            .attr("class", "legend-text")
-            .attr("x", parCoordWidth+70)
-            .attr("y", parCoordHeight-45+9.5)
-            .attr("dy", "0.32em")
-            .text(function(d) { return "Cluster "+(d+1); });
+    parCoordPlotLegend.append("text")
+        .attr("class", "legend-text")
+        .attr("x", parCoordWidth+70)
+        .attr("y", parCoordHeight-45+9.5)
+        .attr("dy", "0.32em")
+        .text(function(d) { return "Cluster "+(d+1); });
 
-        d3.select(".parcoords").select("svg").append("text")
-            .attr("class", "title-text")
-            .attr("x", parCoordWidth-120)
-            .attr("y", 35)
-            .attr("fill", "#fff")
-            .text("Parallel Coordinates Plot");
+    d3.select(".parcoords").select("svg").append("text")
+        .attr("class", "title-text")
+        .attr("x", parCoordWidth-120)
+        .attr("y", 35)
+        .attr("fill", "#fff")
+        .text("Parallel Coordinates Plot");
 
     function draw(d) {
         canvasLinesContext.strokeStyle = clusterColors(d.cluster);
@@ -229,7 +227,7 @@ d3.csv("static/Club_AggData.csv", function(error, data) {
         d3.event.sourceEvent.stopPropagation();
     }
 
-    // Handles a brush event, toggling the display of foreground lines.
+// Handles a brush event, toggling the display of foreground lines.
     function brush() {
         render.invalidate();
 

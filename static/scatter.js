@@ -14,7 +14,8 @@ var svgScatter = d3.select(".scatterplot")
         "translate(" + scatterMargin.left + "," + scatterMargin.top + ")");
 
 //Read the data
-d3.csv("static/Club_AggData.csv", function(data) {
+$.post("", {'data_type': 'club_agg'}, function (data) {
+    data = JSON.parse(data);
 
     // Add X axis
     var pc1 = data.map(function (a) { return a.pc1*100;});

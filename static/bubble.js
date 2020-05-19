@@ -244,7 +244,8 @@ let myBubbleChart = bubbleChart();
 
 // function called once promise is resolved and data is loaded from csv
 // calls bubble chart function to display inside #vis div
-d3.csv("static/Club_AggData.csv", function display(data) {
+$.post("", {'data_type': 'club_agg'}, function (data) {
+    data = JSON.parse(data);
     myBubbleChart('.bubble', data);
 });
 
