@@ -5,8 +5,8 @@ import utils
 
 app = Flask(__name__)
 
-club_agg_df = pd.read_csv('static/Club_AggData.csv')
-league_tables_df = pd.read_csv('static/league_tables.csv')
+club_agg_df = pd.read_csv('FIFAData/Club_AggData.csv')
+league_tables_df = pd.read_csv('FIFAData/league_tables.csv')
 club_agg_request_response_df = utils.pcaKmeans(pd.read_csv('FIFAData/pre_PCA_data.csv'))
 
 
@@ -15,7 +15,6 @@ def index():
     if request.method == 'POST':
         data_type = request.form['data_type']
         if data_type == 'club_agg':
-            # return jsonify(club_agg_df.to_json(orient='records'))
             return jsonify(club_agg_request_response_df.to_json(orient='records'))
         elif data_type == 'league_tables':
             return jsonify(league_tables_df.to_json(orient='records'))
