@@ -16,17 +16,14 @@ function drawGoalsChart(dummy_clubs_set_for_goals) {
         goalsChartWidth = +goalsBarSvg.attr("width") - goalsBarMargin.left - goalsBarMargin.right,
         goalsChartHeight = +goalsBarSvg.attr("height") - goalsBarMargin.top - goalsBarMargin.bottom,
         goalsStackedBarChart = goalsBarSvg.append("g").attr("transform", "translate(" + goalsBarMargin.left + "," + goalsBarMargin.top + ")");
-    // set x scale
     const goalsBarXScale = d3.scaleBand()
         .rangeRound([0, goalsChartWidth - 60])
         .paddingInner(0.3)
         .align(0.1);
 
-    // set y scale
     const goalsBarYScale = d3.scaleLinear()
         .rangeRound([goalsChartHeight, 50]);
 
-    // set the colors
     const goalsBarZScale = d3.scaleOrdinal()
         .range(["#F19B47","#CB4747"]);
     $.post("", {'data_type': 'league_tables'}, function (data) {
@@ -45,8 +42,6 @@ function drawGoalsChart(dummy_clubs_set_for_goals) {
         goalsBarXScale.domain(season_wise_stats_for_goals_bar.map(function (d) {
             return d.Season;
         }));
-        // stackedBarYScale.domain([0, d3.max(season_wise_stats_for_stacked_bar, function(d) {
-        //     return d.Pld; })]).nice();
         goalsBarYScale.domain([0, d3.max(season_wise_stats_for_goals_bar, function(d) {
             return d.GF+d.GA; })]).nice();
         goalsBarZScale.domain(keys);
@@ -89,7 +84,6 @@ function drawGoalsChart(dummy_clubs_set_for_goals) {
             .attr("y", goalsBarYScale(goalsBarYScale.ticks().pop()) -5)
             .attr("dy", "0.32em")
             .attr("fill", "#000")
-            // .attr("font-weight", "bold")
             .attr("text-anchor", "Middle");
 
         var goalsBarLegend = goalsStackedBarChart.append("g")
@@ -122,7 +116,6 @@ function drawGoalsChart(dummy_clubs_set_for_goals) {
             .attr("fill", "#fff")
             .text("Ratio of Goals F/A per season");
     });
-    // Prep the tooltip bits, initial display is hidden
     var goalsBarTooltip = goalsBarSvg.append("g")
         .attr("class", "stackedBar-tooltip")
         .style("display", "none");

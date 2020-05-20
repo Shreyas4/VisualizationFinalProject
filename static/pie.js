@@ -1,4 +1,4 @@
-class Gauge {
+class Donut {
     constructor(options) {
         this.options = options;
 
@@ -139,7 +139,7 @@ function drawPieChart(dummy_club_set_for_pie){
                 dummy_club_set_for_pie.push({'Club':d.Club, 'League':d.league})
                 return true;
             })
-            new Gauge({
+            new Donut({
                 element: '.pieplot',
                 width: d3.select(".my-pie-col").node().getBoundingClientRect().width-20,
                 height: d3.select(".my-pie-col").node().getBoundingClientRect().height-40,
@@ -155,7 +155,7 @@ function drawPieChart(dummy_club_set_for_pie){
                 }
             }
         }
-        new Gauge({
+        new Donut({
             element: '.pieplot',
             width: d3.select(".my-pie-col").node().getBoundingClientRect().width-20,
             height: d3.select(".my-pie-col").node().getBoundingClientRect().height-40,

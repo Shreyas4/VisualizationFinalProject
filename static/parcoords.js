@@ -132,14 +132,11 @@ $.post("", {'data_type': 'club_agg'}, function (data_received) {
         });
     });
 
-// type/dimension default setting happens here
     dimensions.forEach(function(dim) {
         if (!("domain" in dim)) {
-            // detect domain using dimension type's extent function
             dim.domain = d3_functor(dim.type.extent)(data.map(function(d) { return d[dim.key]; }));
         }
         if (!("scale" in dim)) {
-            // use type's default scale for dimension
             dim.scale = dim.type.defaultScale.copy();
         }
         dim.scale.domain(dim.domain);
@@ -162,7 +159,6 @@ $.post("", {'data_type': 'club_agg'}, function (data_received) {
         .attr("y", "56")
         .text(function(d) { return "description" in d ? d.description : d.key; });
 
-// Add and store a brush for each axis.
     parCoordAxes.append("g")
         .attr("class", "brush")
         .each(function(d) {
@@ -227,7 +223,6 @@ $.post("", {'data_type': 'club_agg'}, function (data_received) {
         d3.event.sourceEvent.stopPropagation();
     }
 
-// Handles a brush event, toggling the display of foreground lines.
     function brush() {
         render.invalidate();
 
